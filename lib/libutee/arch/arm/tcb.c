@@ -118,7 +118,8 @@ void __utee_tcb_init(void)
 	}
 
 	/* (Re-)allocate the DTV. + 1 since dtv[0] holds the size */
-	size = DTV_SIZE((__elf_phdr_info.count + 1) * sizeof(union dtv));
+	// __elf_phdf_info.countはuint16_tなので、size_tにキャストしておく
+	size = DTV_SIZE(((size_t)__elf_phdr_info.count + 1) * sizeof(union dtv));
 	_tcb->dtv = realloc(_tcb->dtv, size);
 	if (!_tcb->dtv) {
 		EMSG("DTV allocation failed (%zu bytes)", size);
