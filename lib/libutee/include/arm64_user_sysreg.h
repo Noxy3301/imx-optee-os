@@ -18,7 +18,7 @@ static inline __noprof type read_##reg(void)			\
 	uint64_t val64 = 0;					\
 								\
 	asm volatile("mrs %0, " #asmreg : "=r" (val64));	\
-	return val64;						\
+	return (uint32_t)val64;							\
 }
 
 #define DEFINE_REG_WRITE_FUNC_(reg, type, asmreg)		\
