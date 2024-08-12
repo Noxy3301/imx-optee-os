@@ -41,6 +41,10 @@ struct ta_head {
 	uint64_t depr_entry;
 };
 
+struct ta_info {
+	uintptr_t rva;
+};
+
 #if defined(CFG_FTRACE_SUPPORT)
 #define FTRACE_RETFUNC_DEPTH		50
 union compat_ptr {
@@ -139,5 +143,7 @@ extern uint32_t ta_param_types;
 extern TEE_Param ta_params[TEE_NUM_PARAMS];
 
 int tahead_get_trace_level(void);
+
+uintptr_t tainfo_get_rva(void);
 
 #endif /* USER_TA_HEADER_H */
