@@ -29,8 +29,6 @@
  * length fields.
  */
 
-void utee_return(unsigned long ret) __noreturn;
-
 void _utee_return(unsigned long ret) __noreturn;
 
 void _utee_log(const void *buf, size_t len);
